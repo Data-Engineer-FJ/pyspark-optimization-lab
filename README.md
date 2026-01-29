@@ -26,7 +26,7 @@ En entornos de producción sobre AWS, el éxito de un pipeline no solo se mide e
 
 Sigo un flujo de diagnóstico basado en el análisis profundo del plan de ejecución para asegurar la escalabilidad y eficiencia.
 
-![AWS Data Processing Optimization Diagram](images/Diagrama_en_blanco.jpg)
+![AWS Data Processing Optimization Diagram](images/Diagrama_flujo_optimizacion.jpeg)
 
 ### Ciclo de Trabajo Detallado:
 1.  **Fase 1: Ingesta y Diagnóstico (Detección)**
