@@ -61,7 +61,7 @@ Antes de la intervención, el sistema presentaba un comportamiento asimétrico. 
 
 | Evidencia del Escenario | Diagnóstico del Sesgo (Skew) |
 | :---: | :---: |
-| ![Escenario de Datos](skew_evidence.jpg) | ![Métricas de Sesgo](salting_result.jpg) |
+| ![Escenario de Datos](images/skew_evidence.jpg) | ![Métricas de Sesgo](images/salting_result.jpg) |
 
 **Análisis Técnico:**
 * **Skew Evidence:** El conteo masivo en una sola llave (`BANCO_SKEWED`) disparó una latencia desproporcionada en una única "Task".
@@ -72,7 +72,7 @@ Antes de la intervención, el sistema presentaba un comportamiento asimétrico. 
 ### Fase de Resultado: Carga Balanceada con Salting
 Tras aplicar la **Salting Strategy** (Fase 2 de la arquitectura), se logró fragmentar la llave pesada en 10 sub-particiones paralelas.
 
-![Resultado de Optimización](optimizacion.jpg)
+![Resultado de Optimización](images/optimizacion.jpg)
 
 **Métricas de Mejora:**
 * **Paralelismo:** Se habilitó el uso del 100% de los cores asignados al cluster.
