@@ -61,7 +61,7 @@ Antes de la intervención, el sistema presentaba un comportamiento asimétrico. 
 
 | Evidencia del Escenario | Diagnóstico del Sesgo (Skew) |
 | :---: | :---: |
-| ![Escenario de Datos](images/skew_evidence.jpg) | ![Métricas de Sesgo](images/salting_result.jpg) |
+| ![Escenario de Datos](images/skew_evidence.jpg) | ![Métricas de Sesgo](images/skew_diagnostic.jpg) |
 
 **Análisis Técnico:**
 * **Skew Evidence:** El conteo masivo en una sola llave (`BANCO_SKEWED`) disparó una latencia desproporcionada en una única "Task".
