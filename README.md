@@ -52,7 +52,32 @@ Sigo un flujo de diagnóstico basado en el análisis profundo del plan de ejecuc
 * **Resultado:** Reducción de tiempo de **15.4 min a 2.1 min**.
 
 ---
+## 📊 Evidencias de Optimización (Spark UI & Benchmarking)
 
+Para validar la efectividad de las estrategias implementadas en este laboratorio, se realizó un análisis comparativo utilizando el **Spark UI** y métricas de ejecución en **Databricks Serverless**.
+
+### Fase de Diagnóstico: Identificación del Data Skew
+Antes de la intervención, el sistema presentaba un comportamiento asimétrico. Como se observa en el escenario de datos, una sola partición cargaba con la mayoría de los registros, generando un **Hot Node**.
+
+| Evidencia del Escenario | Diagnóstico del Sesgo (Skew) |
+| :---: | :---: |
+| ![Escenario de Datos](skew_evidence.jpg) | ![Métricas de Sesgo](salting_result.jpg) |
+
+**Análisis Técnico:**
+* **Skew Evidence:** El conteo masivo en una sola llave (`BANCO_SKEWED`) disparó una latencia desproporcionada en una única "Task".
+* **Salting Result:** El Spark UI confirmó que el 90% de los ejecutores estaban inactivos (*Idle*) esperando a que el nodo saturado terminara su proceso.
+
+---
+
+### Fase de Resultado: Carga Balanceada con Salting
+Tras aplicar la **Salting Strategy** (Fase 2 de la arquitectura), se logró fragmentar la llave pesada en 10 sub-particiones paralelas.
+
+![Resultado de Optimización](optimizacion.jpg)
+
+**Métricas de Mejora:**
+* **Paralelismo:** Se habilitó el uso del 100% de los cores asignados al cluster.
+* **Integridad:** El resultado final consolidado (`total_optimizado`) mantiene la precisión exacta de los datos originales, pero con una distribución de carga uniforme.
+* **Eficiencia en AWS:** Al reducir el tiempo de ejecución de las tareas más lentas, se optimiza directamente el consumo de DBU (Databricks Units) y el tiempo operativo de las instancias EC2.
 ## 📊 Resumen de Impacto
 
 | Escenario | Tiempo Inicial | Tiempo Optimizado | Mejora de Rendimiento |
